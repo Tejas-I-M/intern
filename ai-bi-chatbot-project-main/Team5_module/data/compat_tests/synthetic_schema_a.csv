@@ -1,0 +1,6 @@
+txn_ref,purchase_ts,gross_sales,zone,category
+T-1001,2025-01-03,$120.50,North,Beverages
+T-1002,2025-01-04,$98.20,South,Snacks
+T-1003,2025-01-10,$205.00,North,Meals
+T-1004,2025-01-14,$88.75,West,Beverages
+T-1005,2025-01-20,$154.90,East,Snacks

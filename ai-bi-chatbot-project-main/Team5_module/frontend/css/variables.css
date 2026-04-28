@@ -1,0 +1,62 @@
+:root {
+  --font-display: "Orbitron", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-body: "Space Grotesk", "Segoe UI", sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+
+  --transition-fast: 180ms ease;
+  --transition-base: 280ms ease;
+
+  --shadow-card: 0 20px 45px rgba(0, 0, 0, 0.28);
+  --blur-strength: 12px;
+}
+
+body[data-theme="cyber-dark"] {
+  --bg-base: #0a0a0f;
+  --bg-gradient-1: rgba(0, 243, 255, 0.18);
+  --bg-gradient-2: rgba(188, 19, 254, 0.14);
+  --bg-grid: rgba(255, 255, 255, 0.05);
+
+  --text-primary: #ffffff;
+  --text-secondary: #c9d2ff;
+  --text-muted: #95a2c8;
+
+  --card-bg: rgba(20, 20, 30, 0.7);
+  --card-border: rgba(255, 255, 255, 0.16);
+
+  --accent-primary: #00f3ff;
+  --accent-secondary: #bc13fe;
+  --accent-glow: 0 0 28px rgba(0, 243, 255, 0.52);
+  --card-hover-border: rgba(0, 243, 255, 0.55);
+  --switch-border: rgba(0, 243, 255, 0.36);
+  --switch-bg: rgba(20, 20, 30, 0.86);
+}
+
+body[data-theme="holo-light"] {
+  --bg-base: #f8f2e4;
+  --bg-gradient-1: rgba(233, 220, 192, 0.54);
+  --bg-gradient-2: rgba(203, 183, 149, 0.34);
+  --bg-grid: rgba(44, 33, 20, 0.1);
+
+  --text-primary: #121212;
+  --text-secondary: #2a2a2a;
+  --text-muted: #5c5142;
+
+  --card-bg: rgba(255, 251, 240, 0.94);
+  --card-border: rgba(30, 24, 17, 0.28);
+
+  --accent-primary: #1e1b17;
+  --accent-secondary: #4a3a2b;
+  --accent-glow: 0 0 12px rgba(30, 27, 23, 0.12);
+  --card-hover-border: rgba(30, 24, 17, 0.48);
+  --switch-border: rgba(30, 24, 17, 0.38);
+  --switch-bg: rgba(255, 247, 231, 0.98);
+}

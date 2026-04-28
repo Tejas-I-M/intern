@@ -1,0 +1,19 @@
+column_name,sample_values,dtype,label
+Row ID,"1, 2, 3",int64,ID
+Order ID,"CA-2017-152156, CA-2017-138688, US-2016-108966",object,ID
+Order Date,"08/11/2017, 12/06/2017, 11/10/2016",object,Date
+Ship Date,"11/11/2017, 16/06/2017, 18/10/2016",object,Date
+Ship Mode,"Second Class, Standard Class, First Class",object,Categorical
+Customer ID,"CG-12520, DV-13045, SO-20335",object,ID
+Customer Name,"Claire Gute, Darrin Van Huff, Sean O'Donnell",object,Text
+Segment,"Consumer, Corporate, Home Office",object,Categorical
+Country,United States,object,Location
+City,"Henderson, Los Angeles, Fort Lauderdale",object,Location
+State,"Kentucky, California, Florida",object,Location
+Postal Code,"42420.0, 90036.0, 33311.0",float64,Location
+Region,"South, West, Central",object,Categorical
+Product ID,"FUR-BO-10001798, FUR-CH-10000454, OFF-LA-10000240",object,ID
+Category,"Furniture, Office Supplies, Technology",object,Categorical
+Sub-Category,"Bookcases, Chairs, Labels",object,Categorical
+Product Name,"Bush Somerset Collection Bookcase, Hon Deluxe Fabric Upholstered Stacking Chairs, Rounded Back, Self-Adhesive Address Labels for Typewriters by Universal",object,Text
+Sales,"261.96, 731.94, 14.62",float64,Numeric

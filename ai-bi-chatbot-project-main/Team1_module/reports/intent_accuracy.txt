@@ -1,0 +1,34 @@
+Phase 2 - Intent Classifier Accuracy Report
+==================================================
+
+Training examples       : 160
+Train / Test split      : 80% / 20%
+Vectorizer              : TF-IDF  ngram_range=(1,2)
+
+Logistic Regression     : 78.1%
+Random Forest           : 87.5%
+Selected model          : Random Forest
+
+Test accuracy           : 87.5%
+Cross-val accuracy      : 80.6% (+/- 8.5%)
+
+Intents covered:
+  sales_query      - sales, month_id, qtr_id, year_id, revenue, profit
+  ranking_query    - productline, country, customername, dealsize, territory
+  comparison_query - year_id, territory, productline side-by-side
+  forecast_query   - predict next month, quarter, or year
+  hr_query         - attrition, headcount, salary (requires HR merge)
+
+Per-intent breakdown:
+--------------------------------------------------
+                  precision    recall  f1-score   support
+
+comparison_query       1.00      0.86      0.92         7
+  forecast_query       0.83      0.83      0.83         6
+        hr_query       0.86      1.00      0.92         6
+   ranking_query       0.86      0.86      0.86         7
+     sales_query       0.83      0.83      0.83         6
+
+        accuracy                           0.88        32
+       macro avg       0.88      0.88      0.87        32
+    weighted avg       0.88      0.88      0.88        32

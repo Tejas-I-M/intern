@@ -1,0 +1,104 @@
+{
+  "health": {
+    "keys": [
+      "service",
+      "status",
+      "version"
+    ]
+  },
+  "upload": {
+    "keys": [
+      "analysis_plan",
+      "capabilities",
+      "columns",
+      "data_health_snapshot",
+      "dataset_name",
+      "encoding",
+      "exploratory_summary",
+      "file_id",
+      "format",
+      "mapped_columns",
+      "mapping_suggestions",
+      "message",
+      "mode",
+      "preview",
+      "row_count",
+      "source_columns",
+      "success"
+    ]
+  },
+  "analyze": {
+    "keys": [
+      "analysis_mode",
+      "analysis_plan",
+      "capabilities",
+      "mapped_columns",
+      "message",
+      "predefined_questions",
+      "results",
+      "source_columns",
+      "success",
+      "suggested_questions"
+    ],
+    "results_keys": [
+      "analysis_mode",
+      "analysis_status",
+      "business_snapshot",
+      "exploratory_summary",
+      "kpis",
+      "segments",
+      "team4_visualization",
+      "top_categories",
+      "trends"
+    ],
+    "business_snapshot_keys": [
+      "average_order_value",
+      "total_orders",
+      "total_revenue",
+      "unique_customers"
+    ]
+  },
+  "chat": {
+    "keys": [
+      "answer",
+      "confidence",
+      "intent",
+      "source",
+      "success"
+    ]
+  },
+  "analyze_async": {
+    "keys": [
+      "dataset_name",
+      "file_id",
+      "job_id",
+      "max_retries",
+      "message",
+      "status",
+      "success",
+      "timeout_seconds"
+    ]
+  },
+  "job_status": {
+    "keys": [
+      "job",
+      "success"
+    ],
+    "job_keys": [
+      "attempt",
+      "completed_at",
+      "created_at",
+      "dataset_name",
+      "duration_seconds",
+      "error",
+      "file_id",
+      "job_id",
+      "max_retries",
+      "result",
+      "started_at",
+      "status",
+      "timeout_seconds",
+      "updated_at"
+    ]
+  }
+}

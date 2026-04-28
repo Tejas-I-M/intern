@@ -1,0 +1,16 @@
+[
+  {
+    "question": "Who are my top customers?",
+    "answer": "Analysis Result: Customer Segments:\n- Premium: 350 customers\n- Standard: 345 customers\n- Basic: 305 customers\n- Total: 0 customers\n",
+    "confidence": 0.6,
+    "source": "fallback_analysis",
+    "timestamp": "2026-04-07T00:46:28.199135"
+  },
+  {
+    "question": "whats the highest product sale?",
+    "answer": "Analysis Result: Top Products/Categories:\n1. Unknown: $156,905.00\n2. Unknown: $155,580.00\n3. Unknown: $143,515.00\n",
+    "confidence": 0.6,
+    "source": "fallback_analysis",
+    "timestamp": "2026-04-07T00:46:54.410573"
+  }
+]

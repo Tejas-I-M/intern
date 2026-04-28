@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Team5 Business Analytics SPA">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Nexus AI Analytics Platform</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" defer></script>
+</head>
+<body data-theme="holo-light">
+  <div class="noise-layer" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <header class="top-nav glass-card">
+      <h1 class="platform-title">Nexus AI Analytics Platform</h1>
+
+      <div class="top-actions">
+        <p id="session-pill" class="session-pill" hidden></p>
+
+        <button type="button" id="home-nav-btn" class="home-nav-btn" hidden>
+          Home
+        </button>
+
+        <label class="theme-toggle" for="theme-toggle" title="Switch display mode">
+          <input id="theme-toggle" type="checkbox" autocomplete="off" aria-label="Switch between day and night mode">
+          <span class="theme-toggle-track" aria-hidden="true">
+            <span class="theme-icon theme-icon-sun"></span>
+            <span class="theme-icon theme-icon-moon"></span>
+          </span>
+        </label>
+      </div>
+    </header>
+
+    <main id="app-root" class="app-root" aria-live="polite"></main>
+  </div>
+
+  <script type="module" src="./js/app.js?v=14"></script>
+</body>
+</html>

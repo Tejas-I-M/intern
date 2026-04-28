@@ -1,0 +1,189 @@
+{
+  "rex91320@gmail.com": [
+    {
+      "file_id": "3c8d76f2e3a45ed4",
+      "dataset_name": "sales_data.csv",
+      "analyzed_at": "2026-04-28T22:00:46.810812",
+      "summary": {
+        "total_revenue": 5019265.2299999995,
+        "average_order_value": 5019.265229999999,
+        "unique_customers": 31,
+        "total_orders": 1000
+      },
+      "capabilities": {
+        "kpis": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "trends": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "top_categories": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "segmentation": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "forecast": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "churn_prediction": {
+          "status": "completed",
+          "missing_columns": []
+        }
+      }
+    },
+    {
+      "file_id": "3c8d76f2e3a45ed4",
+      "dataset_name": "sales_data.csv",
+      "analyzed_at": "2026-04-28T22:00:46.728331",
+      "summary": {
+        "total_revenue": 5019265.2299999995,
+        "average_order_value": 5019.265229999999,
+        "unique_customers": 31,
+        "total_orders": 1000
+      },
+      "capabilities": {
+        "kpis": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "trends": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "top_categories": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "segmentation": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "forecast": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "churn_prediction": {
+          "status": "completed",
+          "missing_columns": []
+        }
+      }
+    },
+    {
+      "file_id": "c7b6858c7a5eea56",
+      "dataset_name": "retail_sales_dataset.csv",
+      "analyzed_at": "2026-04-28T21:58:37.335258",
+      "summary": {
+        "total_revenue": 456000.0,
+        "average_order_value": 456.0,
+        "unique_customers": 1000,
+        "total_orders": 1000
+      },
+      "capabilities": {
+        "kpis": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "trends": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "top_categories": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "segmentation": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "forecast": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "churn_prediction": {
+          "status": "completed",
+          "missing_columns": []
+        }
+      }
+    },
+    {
+      "file_id": "c7b6858c7a5eea56",
+      "dataset_name": "retail_sales_dataset.csv",
+      "analyzed_at": "2026-04-28T21:58:37.250690",
+      "summary": {
+        "total_revenue": 456000.0,
+        "average_order_value": 456.0,
+        "unique_customers": 1000,
+        "total_orders": 1000
+      },
+      "capabilities": {
+        "kpis": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "trends": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "top_categories": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "segmentation": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "forecast": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "churn_prediction": {
+          "status": "completed",
+          "missing_columns": []
+        }
+      }
+    },
+    {
+      "file_id": "2f50136e40d81705",
+      "dataset_name": "sales_data.csv",
+      "analyzed_at": "2026-04-28T21:52:37.166088",
+      "summary": {
+        "total_revenue": 5019265.2299999995,
+        "average_order_value": 5019.265229999999,
+        "unique_customers": 31,
+        "total_orders": 1000
+      },
+      "capabilities": {
+        "kpis": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "trends": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "top_categories": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "segmentation": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "forecast": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "churn_prediction": {
+          "status": "completed",
+          "missing_columns": []
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "training_rows": 12,
+  "label_counts": {
+    "Customer ID": 2,
+    "Date": 2,
+    "Total Amount": 2,
+    "Product Category": 2,
+    "Gender": 1,
+    "Age": 1,
+    "Country": 1,
+    "Region": 1
+  },
+  "calibrated": true,
+  "recommended_confidence_threshold": null,
+  "random_state": 42,
+  "test_size": 0.2
+}
