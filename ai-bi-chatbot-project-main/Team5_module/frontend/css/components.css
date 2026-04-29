@@ -284,6 +284,16 @@
   max-width: 7rem;
   justify-self: center;
   border-radius: 999px 999px 4px 4px;
+  background: linear-gradient(
+    180deg,
+    var(--accent-primary) 0%,
+    color-mix(in srgb, var(--accent-primary) 52%, var(--accent-secondary) 48%) 52%,
+    var(--accent-secondary) 100%
+  );
+  box-shadow: var(--accent-glow);
+}
+
+body[data-theme="holo-light"] .preview-chart span {
   background: linear-gradient(180deg, #1e1b17 0%, #34291f 52%, #5a4632 100%);
   box-shadow: 0 14px 26px rgba(30, 24, 17, 0.16);
 }
