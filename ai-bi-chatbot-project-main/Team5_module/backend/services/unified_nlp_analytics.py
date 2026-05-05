@@ -222,7 +222,8 @@ class UnifiedNLPAnalytics:
     
     def process_question(self, question: str, use_gemini: bool = True) -> Dict[str, Any]:
         """
-        Full pipeline: Try Gemini API → Try NLP → Fallback to keyword analysis
+        Full pipeline: use deterministic analytics first, then Gemini for questions
+        the analytics engine cannot answer confidently.
         """
         if self.dataframe is None:
             return {
@@ -230,16 +231,9 @@ class UnifiedNLPAnalytics:
                 'answer': 'Please upload your data first to ask questions.',
                 'pipeline_source': 'validation'
             }
-        
-        # Step 1: Try Gemini API first for maximum flexibility (optional)
-        gemini_attempted = False
-        if use_gemini:
-            gemini_attempted = True
-            gemini_answer = self._try_gemini_api(question)
-            if gemini_answer:
-                return gemini_answer
-        
-        # Step 2: Try NLP classification if Team2 is available
+
+        # Step 1: Try NLP classification + analytics engine first.
+        analytics_candidate = None
         if self.team2_available:
             intent_result = self.classify_intent(question)
             intent = intent_result['intent']
@@ -254,8 +248,8 @@ class UnifiedNLPAnalytics:
                 
                 if analytics_result['success']:
                     response = generate_response(analytics_result['result'])
-                    
-                    return {
+
+                    analytics_candidate = {
                         'success': True,
                         'answer': response,
                         'intent': intent,
@@ -263,9 +257,67 @@ class UnifiedNLPAnalytics:
                         'pipeline_stages': ['intent_classification', 'entity_extraction', 'query_building', 'analytics_processing'],
                         'pipeline_source': 'unified_nlp_analytics'
                     }
+
+                    if not self._should_escalate_to_gemini(analytics_candidate):
+                        return analytics_candidate
         
-        # Step 3: Fallback to keyword-based analysis
-        return self._fallback_analysis(question, use_gemini=(use_gemini and not gemini_attempted))
+        # Step 2: Use deterministic dataframe/keyword fallback without calling Gemini.
+        fallback_candidate = self._fallback_analysis(question, use_gemini=False)
+        if not self._should_escalate_to_gemini(fallback_candidate):
+            return fallback_candidate
+
+        # Step 3: Only now ask Gemini if enabled/configured.
+        if use_gemini:
+            gemini_answer = self._try_gemini_api(question)
+            if gemini_answer:
+                return gemini_answer
+
+        return analytics_candidate or fallback_candidate
+
+    def _should_escalate_to_gemini(self, result: Dict[str, Any]) -> bool:
+        """Return True when the deterministic engine produced a weak/generic answer."""
+        if not result or not result.get('success'):
+            return True
+
+        intent = str(result.get('intent', '') or '').lower()
+        source = str(result.get('pipeline_source', result.get('source', '')) or '').lower()
+        answer = str(result.get('answer', '') or '').strip().lower()
+        try:
+            confidence = float(result.get('confidence', 0) or 0)
+        except (TypeError, ValueError):
+            confidence = 0.0
+
+        if intent in {'identity_query', 'dataset_ops_query'}:
+            return False
+
+        if intent in {
+            'analysis_summary_query',
+            'revenue_growth_query',
+            'forecast_query',
+            'revenue_trend_query',
+            'geography_query',
+            'geography_proxy_query',
+            'demographic_query',
+            'top_customers_query',
+            'top_customers_proxy_query',
+        }:
+            return confidence < 0.62
+
+        weak_markers = [
+            'i can help with:',
+            'no concise summary is available',
+            'product performance data not available',
+            'customer segmentation data not available',
+            'revenue information not available',
+        ]
+
+        if any(marker in answer for marker in weak_markers):
+            return True
+
+        if intent in {'fallback_query', 'general_query', 'unknown', ''}:
+            return confidence < 0.66 or source in {'fallback', 'fallback_analysis'}
+
+        return confidence < 0.55
     
     def _try_gemini_api(self, question: str) -> Optional[Dict[str, Any]]:
         """Try to answer using Gemini API with enhanced error handling"""
@@ -293,7 +345,19 @@ class UnifiedNLPAnalytics:
 
 User Question: {question}
 
-Provide a concise, data-driven answer. Use actual numbers from the data when available."""
+Answer using this exact structure:
+
+Answer:
+- Give the direct answer in 1-2 bullets.
+
+Evidence from Dataset:
+- Use actual numbers from the provided context when available.
+- If the dataset does not contain the requested personal or business field, clearly say it is not available in the uploaded dataset.
+
+Recommended Next Step:
+- Give one practical next step.
+
+Keep the answer concise, business-focused, and suitable for inclusion in an executive report."""
                     
                     # Get response from Gemini
                     response = model.generate_content(prompt, stream=False)

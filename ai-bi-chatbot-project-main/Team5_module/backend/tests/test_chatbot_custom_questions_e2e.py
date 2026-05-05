@@ -66,6 +66,12 @@ def test_chatbot_custom_questions_and_integrated_endpoints(client, write_dataset
             continue
         assert body.get('intent') == expected_intent
 
+    history = client.get(f'/api/analysis/chat-history/{file_id}')
+    assert history.status_code == 200
+    history_body = history.get_json() or {}
+    assert history_body.get('success') is True
+    assert len(history_body.get('history', [])) >= 10
+
     # Plot/visualization integration
     viz = client.get(f'/api/analysis/team4-visualization/{file_id}')
     assert viz.status_code == 200
@@ -101,7 +107,7 @@ def test_chatbot_custom_questions_and_integrated_endpoints(client, write_dataset
     assert len(pdf.data or b'') > 100
 
 
-def test_chatbot_prefers_gemini_when_available(client, full_mode_df, write_dataset, monkeypatch):
+def test_chatbot_uses_gemini_for_questions_analytics_cannot_handle(client, full_mode_df, write_dataset, monkeypatch):
     register_and_login(client, email='gemini-pref@example.com')
 
     csv_path = write_dataset(full_mode_df, 'csv', 'gemini_pref')
@@ -128,13 +134,78 @@ def test_chatbot_prefers_gemini_when_available(client, full_mode_df, write_datas
 
     chat = client.post(
         f'/api/analysis/chat/{file_id}',
-        json={'question': 'Give me a growth strategy', 'use_gemini': True},
+        json={'question': 'Can you draft a board narrative for this business?', 'use_gemini': True},
     )
     assert chat.status_code == 200
     body = chat.get_json() or {}
     assert body.get('success') is True
     assert body.get('source') == 'gemini_api(mock)'
     assert body.get('intent') == 'gemini_powered'
+
+
+def test_chatbot_defaults_to_analytics_without_gemini(client, full_mode_df, write_dataset, monkeypatch):
+    register_and_login(client, email='analytics-default@example.com')
+
+    csv_path = write_dataset(full_mode_df, 'csv', 'analytics_default')
+    up = upload_file(client, csv_path)
+    assert up.status_code == 201
+    file_id = up.get_json()['file_id']
+
+    analyze = client.post(f'/api/analysis/analyze/{file_id}')
+    assert analyze.status_code == 200
+
+    service = analysis_routes.unified_nlp_analytics
+    assert service is not None
+
+    monkeypatch.setattr(
+        service,
+        '_try_gemini_api',
+        lambda _question: {
+            'success': True,
+            'answer': 'Gemini should not be used by default.',
+            'intent': 'gemini_powered',
+            'confidence': 0.91,
+            'pipeline_source': 'gemini_api(mock)',
+        },
+    )
+
+    chat = client.post(
+        f'/api/analysis/chat/{file_id}',
+        json={'question': 'Can you draft a board narrative for this business?'},
+    )
+    assert chat.status_code == 200
+    body = chat.get_json() or {}
+    assert body.get('success') is True
+    assert body.get('source') != 'gemini_api(mock)'
+    assert 'Gemini should not be used by default.' not in body.get('answer', '')
+
+
+def test_chat_history_can_be_loaded_and_cleared(client, full_mode_df, write_dataset):
+    register_and_login(client, email='history-e2e@example.com')
+
+    csv_path = write_dataset(full_mode_df, 'csv', 'history_e2e')
+    up = upload_file(client, csv_path)
+    assert up.status_code == 201
+    file_id = up.get_json()['file_id']
+
+    analyze = client.post(f'/api/analysis/analyze/{file_id}')
+    assert analyze.status_code == 200
+
+    chat = client.post(
+        f'/api/analysis/chat/{file_id}',
+        json={'question': 'What is my total revenue?', 'use_gemini': True},
+    )
+    assert chat.status_code == 200
+
+    history = client.get(f'/api/analysis/chat-history/{file_id}')
+    assert history.status_code == 200
+    history_body = history.get_json() or {}
+    assert history_body.get('success') is True
+    assert [item.get('role') for item in history_body.get('history', [])[-2:]] == ['user', 'assistant']
+
+    cleared = client.delete(f'/api/analysis/chat-history/{file_id}')
+    assert cleared.status_code == 200
+    assert (cleared.get_json() or {}).get('history') == []
 
 
 def test_chatbot_fallback_answers_broader_business_questions(client, write_dataset, monkeypatch):

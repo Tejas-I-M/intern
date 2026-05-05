@@ -1495,9 +1495,9 @@ def chat(file_id):
                 'message': 'Please run analysis first'
             }), 400
         
-        data = request.get_json()
+        data = request.get_json() or {}
         question = data.get('question', '').strip()
-        use_gemini = data.get('use_gemini', False)
+        use_gemini = bool(data.get('use_gemini', False))
         
         if not question:
             return jsonify({
@@ -1553,6 +1553,50 @@ def chat(file_id):
         return jsonify({
             'success': False,
             'message': f'Chat error: {str(e)}'
+        }), 500
+
+
+@analysis_bp.route('/chat-history/<file_id>', methods=['GET', 'DELETE'])
+def chat_history(file_id):
+    """Return or clear stored chat history for the active analyzed dataset."""
+    try:
+        user_id = session.get('user_id')
+
+        if not user_id:
+            return jsonify({
+                'success': False,
+                'message': 'Not authenticated'
+            }), 401
+
+        if user_id not in user_analyses or file_id not in user_analyses[user_id]:
+            return jsonify({
+                'success': False,
+                'message': 'Please run analysis first'
+            }), 400
+
+        chat_key = f"{user_id}_{file_id}"
+
+        if request.method == 'DELETE':
+            chat_histories[chat_key] = []
+            return jsonify({
+                'success': True,
+                'message': 'Chat history cleared.',
+                'history': []
+            }), 200
+
+        history = chat_histories.get(chat_key, [])
+        return jsonify({
+            'success': True,
+            'message': 'Chat history loaded.',
+            'history': history[-50:]
+        }), 200
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'message': f'Chat history error: {str(e)}'
         }), 500
 
 

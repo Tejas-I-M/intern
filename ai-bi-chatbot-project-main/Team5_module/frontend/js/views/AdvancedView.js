@@ -1,5 +1,5 @@
 import { analyticsService as sharedAnalyticsService } from "../services/AnalyticsService.js";
-import { reportService as sharedReportService } from "../services/ReportService.js";
+import { reportService as sharedReportService } from "../services/ReportService.js?v=2";
 import { stateManager as sharedStateManager } from "../core/StateManager.js";
 import { toast as sharedToast } from "../components/Toast.js";
 import { Sidebar } from "../components/Sidebar.js";

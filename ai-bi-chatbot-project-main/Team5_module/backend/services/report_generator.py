@@ -1459,10 +1459,11 @@ class ReportGenerator:
 """
         if qa_entries:
             for idx, (q, a) in enumerate(qa_entries, 1):
+                safe_answer_html = escape(a).replace('\n', '<br>')
                 html_content += f"""
             <div class="qa-card">
                 <div class="qa-user"><strong>Q{idx}:</strong> {escape(q)}</div>
-                <div class="qa-ai"><strong>Answer:</strong> {escape(a)}</div>
+                <div class="qa-ai"><strong>Answer:</strong><br>{safe_answer_html}</div>
             </div>
 """
         else:
@@ -1812,7 +1813,7 @@ class ReportGenerator:
             if qa_entries:
                 for idx, (q, a) in enumerate(qa_entries, 1):
                     safe_q = q.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-                    safe_a = a.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+                    safe_a = a.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\n', '<br/>')
                     story.append(Paragraph(f"Q{idx}: {safe_q}", styles['Heading3']))
                     story.append(Paragraph(f"Answer: {safe_a}", body_style))
                     story.append(Spacer(1, 6))

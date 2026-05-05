@@ -1,5 +1,5 @@
 import { analyticsService as sharedAnalyticsService } from "../services/AnalyticsService.js";
-import { reportService as sharedReportService } from "../services/ReportService.js";
+import { reportService as sharedReportService } from "../services/ReportService.js?v=2";
 import { stateManager as sharedStateManager } from "../core/StateManager.js";
 import { toast as sharedToast } from "../components/Toast.js";
 import { Sidebar } from "../components/Sidebar.js";
@@ -56,6 +56,10 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+function formatMessageHtml(value) {
+  return escapeHtml(value || "").replace(/\n/g, "<br>");
 }
 
 function formatCurrency(value) {
@@ -1333,11 +1337,11 @@ export class DashboardView {
       .map((entry) => {
         const label = entry?.role === "assistant" ? "AI" : entry?.role === "user" ? "You" : "System";
         return `
-          <article class="chat-message chat-${escapeHtml(entry?.role || "system")}">
-            <header>${escapeHtml(label)}</header>
-            <p>${escapeHtml(entry?.message || "")}</p>
-          </article>
-        `;
+            <article class="chat-message chat-${escapeHtml(entry?.role || "system")}">
+              <header>${escapeHtml(label)}</header>
+              <p>${formatMessageHtml(entry?.message || "")}</p>
+            </article>
+          `;
       })
       .join("");
 

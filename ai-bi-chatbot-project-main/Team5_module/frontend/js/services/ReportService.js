@@ -119,6 +119,89 @@ export class ReportService {
     };
   }
 
+  normalizeChatMessage(entry) {
+    const payload = asObject(entry);
+    const role = safeString(payload?.role, "system");
+
+    return {
+      role: ["user", "assistant", "system"].includes(role) ? role : "system",
+      message: safeString(payload?.message, ""),
+      timestamp: safeString(payload?.timestamp || payload?.at, ""),
+      metadata: asObject(payload?.metadata)
+    };
+  }
+
+  async getChatHistory(fileId = null) {
+    const activeFileId = this.getActiveFileId(fileId);
+    if (!activeFileId) {
+      return {
+        success: false,
+        message: "Dataset file_id is missing. Analyze a dataset first.",
+        data: []
+      };
+    }
+
+    let response = null;
+    try {
+      response = await this.api.get(`/api/analysis/chat-history/${encodeURIComponent(activeFileId)}`, {
+        suppressErrorToast: true
+      });
+    } catch (error) {
+      return {
+        success: false,
+        message: `Unable to load chat history: ${error?.message || "unknown error"}`,
+        data: []
+      };
+    }
+
+    if (!response?.success) {
+      return {
+        success: false,
+        message: response?.message || "Unable to load chat history.",
+        data: []
+      };
+    }
+
+    const payload = asObject(response?.data);
+    const history = asArray(payload?.history)
+      .map((item) => this.normalizeChatMessage(item))
+      .filter((item) => item.message);
+
+    return {
+      success: true,
+      message: payload?.message || response?.message || "Chat history loaded.",
+      data: history
+    };
+  }
+
+  async clearChatHistory(fileId = null) {
+    const activeFileId = this.getActiveFileId(fileId);
+    if (!activeFileId) {
+      return {
+        success: false,
+        message: "Dataset file_id is missing. Analyze a dataset first.",
+        data: []
+      };
+    }
+
+    let response = null;
+    try {
+      response = await this.api.delete(`/api/analysis/chat-history/${encodeURIComponent(activeFileId)}`);
+    } catch (error) {
+      return {
+        success: false,
+        message: `Unable to clear chat history: ${error?.message || "unknown error"}`,
+        data: []
+      };
+    }
+
+    return {
+      success: Boolean(response?.success),
+      message: response?.message || "Chat history cleared.",
+      data: []
+    };
+  }
+
   async getPredefinedQuestions() {
     let response = null;
 

@@ -5,10 +5,10 @@ import { authService } from "./services/AuthService.js";
 import { AuthView } from "./views/AuthView.js";
 import { LandingView } from "./views/LandingView.js?v=6";
 import { UploadView } from "./views/UploadView.js?v=2";
-import { DashboardView } from "./views/DashboardView.js?v=2";
-import { AdvancedView } from "./views/AdvancedView.js";
-import { ChatView } from "./views/ChatView.js";
-import { ReportView } from "./views/ReportView.js";
+import { DashboardView } from "./views/DashboardView.js?v=4";
+import { AdvancedView } from "./views/AdvancedView.js?v=2";
+import { ChatView } from "./views/ChatView.js?v=3";
+import { ReportView } from "./views/ReportView.js?v=3";
 
 const toast = sharedToast || new Toast();
 const router = new Router({ rootSelector: "#app-root", toastInstance: toast });

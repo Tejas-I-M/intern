@@ -1,0 +1,37 @@
+[PATH] Python import paths configured:
+   Project Root: C:\Users\Tejas\Desktop\team9\ai-bi-chatbot-project-main
+   Looking for Team2_module at: C:\Users\Tejas\Desktop\team9\ai-bi-chatbot-project-main\Team2_module
+[OK] Team2_module imported successfully
+[OK] analytics_engine imported successfully
+charts.py loaded
+✅ Scaler loaded
+✅ Segmentation model loaded
+✅ Forecast model loaded
+✅ Churn model loaded
+✅ Churn features loaded
+✅ Column mapper model loaded
+✅ Column mapper label encoder loaded
+[OK] Unified NLP Analytics Service Initialized
+   Team2_module NLP: Available
+   analytics_engine: Available
+   Gemini API: Configured
+✅ Services initialized
+✅ Unified NLP + Analytics Engine initialized
+✅ Team4 visualization integration: Enabled
+✅ Flask app initialized
+📁 Models path: C:\Users\Tejas\Desktop\team9\ai-bi-chatbot-project-main\Team5_module\backend\..\models
+🔑 Gemini API configured: Yes
+🧹 Artifact cleanup worker started (max_age=48h, interval=60m)
+
+==================================================
+🚀 Nexus AI Backend Starting...
+==================================================
+Environment: development
+Debug Mode: True
+Use Reloader: False
+Upload Folder: C:\Users\Tejas\Desktop\team9\ai-bi-chatbot-project-main\Team5_module\backend\uploads
+Server URL: http://127.0.0.1:5000
+==================================================
+
+ * Serving Flask app 'app'
+ * Debug mode: on

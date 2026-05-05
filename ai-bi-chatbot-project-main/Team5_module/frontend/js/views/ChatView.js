@@ -1,4 +1,4 @@
-import { reportService as sharedReportService } from "../services/ReportService.js";
+import { reportService as sharedReportService } from "../services/ReportService.js?v=2";
 import { stateManager as sharedStateManager } from "../core/StateManager.js";
 import { toast as sharedToast } from "../components/Toast.js";
 import { Sidebar } from "../components/Sidebar.js";
@@ -14,6 +14,10 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+function formatMessageHtml(value) {
+  return escapeHtml(value || "").replace(/\n/g, "<br>");
 }
 
 export class ChatView {
@@ -69,6 +73,7 @@ export class ChatView {
 
     this.syncState(this.stateManager.getState());
     this.loadPredefinedQuestions();
+    this.loadChatHistory();
     this.renderMessages();
 
     return () => this.unmount();
@@ -152,9 +157,7 @@ export class ChatView {
 
     const clearButton = event?.target?.closest?.("[data-chat-clear]");
     if (clearButton) {
-      this.messages = [];
-      this.renderMessages();
-      this.setStatus("Chat cleared.", "info");
+      this.clearChat();
       return;
     }
 
@@ -247,6 +250,30 @@ export class ChatView {
     this.renderMessages();
   }
 
+  async loadChatHistory() {
+    if (!this.fileId || !this.canAsk) {
+      return;
+    }
+
+    const result = await this.reportService.getChatHistory(this.fileId);
+    if (!result?.success) {
+      return;
+    }
+
+    this.messages = Array.isArray(result?.data) ? result.data : [];
+    this.renderMessages();
+  }
+
+  async clearChat() {
+    this.messages = [];
+    this.renderMessages();
+    this.setStatus("Chat cleared.", "info");
+
+    if (this.fileId) {
+      await this.reportService.clearChatHistory(this.fileId);
+    }
+  }
+
   renderMessages() {
     const thread = this.container?.querySelector?.("[data-chat-thread]");
     if (!thread) {
@@ -265,7 +292,7 @@ export class ChatView {
         return `
           <article class="chat-message chat-${escapeHtml(role)}">
             <header>${escapeHtml(label)}</header>
-            <p>${escapeHtml(entry?.message || "")}</p>
+            <p>${formatMessageHtml(entry?.message || "")}</p>
           </article>
         `;
       })

@@ -1,4 +1,4 @@
-import { reportService as sharedReportService } from "../services/ReportService.js";
+import { reportService as sharedReportService } from "../services/ReportService.js?v=2";
 import { analyticsService as sharedAnalyticsService } from "../services/AnalyticsService.js";
 import { stateManager as sharedStateManager } from "../core/StateManager.js";
 import { toast as sharedToast } from "../components/Toast.js";
@@ -321,12 +321,47 @@ export class ReportView {
 
     if (result?.success) {
       this.reportHistory = Array.isArray(result?.data) ? result.data : [];
+      this.hydrateLatestReportFromHistory();
       this.renderHistory();
     } else {
       this.reportHistory = [];
+      this.latestReport = null;
+      this.renderLatestReport();
       this.renderHistory();
       this.setStatus(result?.message || "Unable to load report history.", "error");
     }
+  }
+
+  hydrateLatestReportFromHistory() {
+    if (!this.reportHistory.length) {
+      this.latestReport = null;
+      this.renderLatestReport();
+      return;
+    }
+
+    const currentReportId = safeText(this.latestReport?.reportId, "");
+    if (currentReportId && this.reportHistory.some((item) => safeText(item?.reportId, "") === currentReportId)) {
+      this.renderLatestReport();
+      return;
+    }
+
+    const rememberedLatest = asObject(this.stateManager.get("reports.latest", {}));
+    const rememberedReportId = safeText(rememberedLatest?.reportId, "");
+    const rememberedReport = rememberedReportId
+      ? this.reportHistory.find((item) => safeText(item?.reportId, "") === rememberedReportId)
+      : null;
+
+    const activeFileReport = this.fileId
+      ? this.reportHistory.find((item) => safeText(item?.fileId, "") === this.fileId)
+      : null;
+
+    this.latestReport = rememberedReport || activeFileReport || this.reportHistory[0] || null;
+
+    if (this.latestReport) {
+      this.stateManager.updatePath("reports.latest", this.latestReport);
+    }
+
+    this.renderLatestReport();
   }
 
   async loadDashboardSummary() {

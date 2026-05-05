@@ -1,9 +1,9 @@
 {
   "rex91320@gmail.com": [
     {
-      "file_id": "cf7ef02c56261103",
+      "file_id": "1bfed2ec0db7a1ce",
       "dataset_name": "ecommerce_customer_behavior_dataset_v2.csv",
-      "analyzed_at": "2026-05-05T18:32:06.297438",
+      "analyzed_at": "2026-05-06T00:49:10.196188",
       "summary": {
         "total_revenue": 21779052.59,
         "average_order_value": 1277.4387113613702,
@@ -38,9 +38,9 @@
       }
     },
     {
-      "file_id": "cf7ef02c56261103",
+      "file_id": "1bfed2ec0db7a1ce",
       "dataset_name": "ecommerce_customer_behavior_dataset_v2.csv",
-      "analyzed_at": "2026-05-05T18:32:06.028423",
+      "analyzed_at": "2026-05-06T00:49:10.146173",
       "summary": {
         "total_revenue": 21779052.59,
         "average_order_value": 1277.4387113613702,
@@ -75,14 +75,14 @@
       }
     },
     {
-      "file_id": "b50c252585cb1b3a",
-      "dataset_name": "sales_data.csv",
-      "analyzed_at": "2026-05-05T17:20:31.122663",
+      "file_id": "b121477eeb209be7",
+      "dataset_name": "ecommerce_customer_behavior_dataset.csv",
+      "analyzed_at": "2026-05-06T00:39:22.701727",
       "summary": {
-        "total_revenue": 5019265.2299999995,
-        "average_order_value": 5019.265229999999,
-        "unique_customers": 0,
-        "total_orders": 1000
+        "total_revenue": 4915544.57,
+        "average_order_value": 983.108914,
+        "unique_customers": 5000,
+        "total_orders": 5000
       },
       "capabilities": {
         "kpis": {
@@ -98,34 +98,28 @@
           "missing_columns": []
         },
         "segmentation": {
-          "status": "skipped",
-          "reason": "Customer and amount columns missing for segmentation",
-          "missing_columns": [
-            "Customer ID"
-          ]
+          "status": "completed",
+          "missing_columns": []
         },
         "forecast": {
           "status": "completed",
           "missing_columns": []
         },
         "churn_prediction": {
-          "status": "skipped",
-          "reason": "Core columns plus demographic or product columns are required",
-          "missing_columns": [
-            "Customer ID"
-          ]
+          "status": "completed",
+          "missing_columns": []
         }
       }
     },
     {
-      "file_id": "b50c252585cb1b3a",
-      "dataset_name": "sales_data.csv",
-      "analyzed_at": "2026-05-05T17:20:31.047668",
+      "file_id": "b121477eeb209be7",
+      "dataset_name": "ecommerce_customer_behavior_dataset.csv",
+      "analyzed_at": "2026-05-06T00:39:22.584716",
       "summary": {
-        "total_revenue": 5019265.2299999995,
-        "average_order_value": 5019.265229999999,
-        "unique_customers": 0,
-        "total_orders": 1000
+        "total_revenue": 4915544.57,
+        "average_order_value": 983.108914,
+        "unique_customers": 5000,
+        "total_orders": 5000
       },
       "capabilities": {
         "kpis": {
@@ -141,34 +135,28 @@
           "missing_columns": []
         },
         "segmentation": {
-          "status": "skipped",
-          "reason": "Customer and amount columns missing for segmentation",
-          "missing_columns": [
-            "Customer ID"
-          ]
+          "status": "completed",
+          "missing_columns": []
         },
         "forecast": {
           "status": "completed",
           "missing_columns": []
         },
         "churn_prediction": {
-          "status": "skipped",
-          "reason": "Core columns plus demographic or product columns are required",
-          "missing_columns": [
-            "Customer ID"
-          ]
+          "status": "completed",
+          "missing_columns": []
         }
       }
     },
     {
-      "file_id": "b50c252585cb1b3a",
-      "dataset_name": "sales_data.csv",
-      "analyzed_at": "2026-05-05T17:18:30.330233",
+      "file_id": "35e0aa6fc465705b",
+      "dataset_name": "ecommerce_customer_behavior_dataset.csv",
+      "analyzed_at": "2026-05-05T23:47:09.184617",
       "summary": {
-        "total_revenue": 5019265.2299999995,
-        "average_order_value": 5019.265229999999,
-        "unique_customers": 2,
-        "total_orders": 1000
+        "total_revenue": 4915544.57,
+        "average_order_value": 983.108914,
+        "unique_customers": 5000,
+        "total_orders": 5000
       },
       "capabilities": {
         "kpis": {
