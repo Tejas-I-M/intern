@@ -1,14 +1,14 @@
 {
   "rex91320@gmail.com": [
     {
-      "file_id": "38e0f912887a2574",
-      "dataset_name": "sales_data.csv",
-      "analyzed_at": "2026-04-29T14:52:51.498292",
+      "file_id": "4667235588aab2a7",
+      "dataset_name": "ecommerce_customer_behavior_dataset_v2.csv",
+      "analyzed_at": "2026-05-05T17:07:58.449094",
       "summary": {
-        "total_revenue": 5019265.2299999995,
-        "average_order_value": 5019.265229999999,
-        "unique_customers": 5,
-        "total_orders": 1000
+        "total_revenue": 21779052.59,
+        "average_order_value": 1277.4387113613702,
+        "unique_customers": 5000,
+        "total_orders": 17049
       },
       "capabilities": {
         "kpis": {
@@ -38,14 +38,14 @@
       }
     },
     {
-      "file_id": "38e0f912887a2574",
-      "dataset_name": "sales_data.csv",
-      "analyzed_at": "2026-04-29T14:52:51.460242",
+      "file_id": "4667235588aab2a7",
+      "dataset_name": "ecommerce_customer_behavior_dataset_v2.csv",
+      "analyzed_at": "2026-05-05T17:07:58.370096",
       "summary": {
-        "total_revenue": 5019265.2299999995,
-        "average_order_value": 5019.265229999999,
-        "unique_customers": 5,
-        "total_orders": 1000
+        "total_revenue": 21779052.59,
+        "average_order_value": 1277.4387113613702,
+        "unique_customers": 5000,
+        "total_orders": 17049
       },
       "capabilities": {
         "kpis": {
@@ -75,14 +75,14 @@
       }
     },
     {
-      "file_id": "38e0f912887a2574",
-      "dataset_name": "sales_data.csv",
-      "analyzed_at": "2026-04-29T14:51:00.382978",
+      "file_id": "a20e9df3b8737dfa",
+      "dataset_name": "ecommerce_customer_behavior_dataset_v2.csv",
+      "analyzed_at": "2026-05-05T17:03:26.666512",
       "summary": {
-        "total_revenue": 5019265.2299999995,
-        "average_order_value": 5019.265229999999,
-        "unique_customers": 31,
-        "total_orders": 1000
+        "total_revenue": 21779052.59,
+        "average_order_value": 1277.4387113613702,
+        "unique_customers": 5000,
+        "total_orders": 17049
       },
       "capabilities": {
         "kpis": {
@@ -112,14 +112,14 @@
       }
     },
     {
-      "file_id": "38e0f912887a2574",
-      "dataset_name": "sales_data.csv",
-      "analyzed_at": "2026-04-29T14:51:00.270971",
+      "file_id": "a20e9df3b8737dfa",
+      "dataset_name": "ecommerce_customer_behavior_dataset_v2.csv",
+      "analyzed_at": "2026-05-05T17:03:26.563332",
       "summary": {
-        "total_revenue": 5019265.2299999995,
-        "average_order_value": 5019.265229999999,
-        "unique_customers": 31,
-        "total_orders": 1000
+        "total_revenue": 21779052.59,
+        "average_order_value": 1277.4387113613702,
+        "unique_customers": 5000,
+        "total_orders": 17049
       },
       "capabilities": {
         "kpis": {
@@ -149,14 +149,14 @@
       }
     },
     {
-      "file_id": "3c8d76f2e3a45ed4",
-      "dataset_name": "sales_data.csv",
-      "analyzed_at": "2026-04-28T22:00:46.810812",
+      "file_id": "11fe24f9605766a8",
+      "dataset_name": "ecommerce_customer_behavior_dataset_v2.csv",
+      "analyzed_at": "2026-05-05T16:57:40.898843",
       "summary": {
-        "total_revenue": 5019265.2299999995,
-        "average_order_value": 5019.265229999999,
-        "unique_customers": 31,
-        "total_orders": 1000
+        "total_revenue": 21779052.59,
+        "average_order_value": 1277.4387113613702,
+        "unique_customers": 5000,
+        "total_orders": 17049
       },
       "capabilities": {
         "kpis": {
