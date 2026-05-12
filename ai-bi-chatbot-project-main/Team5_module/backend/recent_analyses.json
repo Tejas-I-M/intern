@@ -1,83 +1,9 @@
 {
   "rex91320@gmail.com": [
     {
-      "file_id": "1bfed2ec0db7a1ce",
-      "dataset_name": "ecommerce_customer_behavior_dataset_v2.csv",
-      "analyzed_at": "2026-05-06T00:49:10.196188",
-      "summary": {
-        "total_revenue": 21779052.59,
-        "average_order_value": 1277.4387113613702,
-        "unique_customers": 5000,
-        "total_orders": 17049
-      },
-      "capabilities": {
-        "kpis": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "trends": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "top_categories": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "segmentation": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "forecast": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "churn_prediction": {
-          "status": "completed",
-          "missing_columns": []
-        }
-      }
-    },
-    {
-      "file_id": "1bfed2ec0db7a1ce",
-      "dataset_name": "ecommerce_customer_behavior_dataset_v2.csv",
-      "analyzed_at": "2026-05-06T00:49:10.146173",
-      "summary": {
-        "total_revenue": 21779052.59,
-        "average_order_value": 1277.4387113613702,
-        "unique_customers": 5000,
-        "total_orders": 17049
-      },
-      "capabilities": {
-        "kpis": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "trends": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "top_categories": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "segmentation": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "forecast": {
-          "status": "completed",
-          "missing_columns": []
-        },
-        "churn_prediction": {
-          "status": "completed",
-          "missing_columns": []
-        }
-      }
-    },
-    {
-      "file_id": "b121477eeb209be7",
+      "file_id": "d6bf14327811bb73",
       "dataset_name": "ecommerce_customer_behavior_dataset.csv",
-      "analyzed_at": "2026-05-06T00:39:22.701727",
+      "analyzed_at": "2026-05-12T10:01:21.659434",
       "summary": {
         "total_revenue": 4915544.57,
         "average_order_value": 983.108914,
@@ -112,9 +38,9 @@
       }
     },
     {
-      "file_id": "b121477eeb209be7",
+      "file_id": "d6bf14327811bb73",
       "dataset_name": "ecommerce_customer_behavior_dataset.csv",
-      "analyzed_at": "2026-05-06T00:39:22.584716",
+      "analyzed_at": "2026-05-12T10:01:21.595013",
       "summary": {
         "total_revenue": 4915544.57,
         "average_order_value": 983.108914,
@@ -149,9 +75,9 @@
       }
     },
     {
-      "file_id": "35e0aa6fc465705b",
+      "file_id": "beb6f2db9e9f45de",
       "dataset_name": "ecommerce_customer_behavior_dataset.csv",
-      "analyzed_at": "2026-05-05T23:47:09.184617",
+      "analyzed_at": "2026-05-10T11:16:04.234833",
       "summary": {
         "total_revenue": 4915544.57,
         "average_order_value": 983.108914,
@@ -182,6 +108,98 @@
         "churn_prediction": {
           "status": "completed",
           "missing_columns": []
+        }
+      }
+    },
+    {
+      "file_id": "b9c8aa716eea0b9f",
+      "dataset_name": "Dataset.xlsx",
+      "analyzed_at": "2026-05-10T11:15:20.506552",
+      "summary": {
+        "total_revenue": 80800.5,
+        "average_order_value": 8.914441747572816,
+        "unique_customers": 0,
+        "total_orders": 9064
+      },
+      "capabilities": {
+        "kpis": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "trends": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "top_categories": {
+          "status": "skipped",
+          "reason": "Product/category columns missing for category analysis",
+          "missing_columns": [
+            "Product Category"
+          ]
+        },
+        "segmentation": {
+          "status": "skipped",
+          "reason": "Customer and amount columns missing for segmentation",
+          "missing_columns": [
+            "Customer ID"
+          ]
+        },
+        "forecast": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "churn_prediction": {
+          "status": "skipped",
+          "reason": "Core columns plus demographic or product columns are required",
+          "missing_columns": [
+            "Customer ID"
+          ]
+        }
+      }
+    },
+    {
+      "file_id": "b9c8aa716eea0b9f",
+      "dataset_name": "Dataset.xlsx",
+      "analyzed_at": "2026-05-10T11:15:20.431736",
+      "summary": {
+        "total_revenue": 80800.5,
+        "average_order_value": 8.914441747572816,
+        "unique_customers": 0,
+        "total_orders": 9064
+      },
+      "capabilities": {
+        "kpis": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "trends": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "top_categories": {
+          "status": "skipped",
+          "reason": "Product/category columns missing for category analysis",
+          "missing_columns": [
+            "Product Category"
+          ]
+        },
+        "segmentation": {
+          "status": "skipped",
+          "reason": "Customer and amount columns missing for segmentation",
+          "missing_columns": [
+            "Customer ID"
+          ]
+        },
+        "forecast": {
+          "status": "completed",
+          "missing_columns": []
+        },
+        "churn_prediction": {
+          "status": "skipped",
+          "reason": "Core columns plus demographic or product columns are required",
+          "missing_columns": [
+            "Customer ID"
+          ]
         }
       }
     }
